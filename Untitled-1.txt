@@ -1,0 +1,2 @@
+if sexo = int('F: Feminino' 'M: Masculino)
+if altura = 
