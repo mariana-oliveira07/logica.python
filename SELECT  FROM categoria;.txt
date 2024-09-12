@@ -1,0 +1,31 @@
+SELECT * FROM categoria;
+
+SELECT * FROM pizza;
+
+SELECT * FROM cliente;
+
+SELECT * FROM venda;
+
+
+use bdpizzas;
+
+INSERT INTO categoria (opcao, tamanho, preco)
+values ('tradicional' , 'P' , 48), ('tradicional' , 'M' , 58), ('tradicional' , 'G' , 68);
+
+INSERT INTO categoria (opcao, tamanho, preco)
+values ('especiais' , 'P' , 50), ('especiais' , 'M' , 60), ('especiais' , 'G' , 70);
+
+INSERT INTO pizza (sabor, descrição)
+values ('Costela' , 'Mussarela, Molho, Presunto, Tomate, Costela Desfiado, Molho de Pimenta e orefano.');
+
+INSERT INTO cliente (nome, cpf, telefone, endereco, email)
+values ('Wisner', '12345678978', '64123456789', 'Rua Senac, 10, TI', 'wisner@mail.com');
+
+INSERT INTO venda (idcliente, idcategoria, idpizza) values (1, 3, 1);
+INSERT INTO venda (idpizza, idcategoria) values (1, 3);
+
+SELECT p.sabor, cat.opcao categoria, cat.tamanho, cat.preco, c.nome
+FROM venda v
+join pizza p on p.idpizza = v.idpizza
+join categoria cat on cat.idcategoria = v.idcategoria
+join cliente c on c.idcliente = v.idcliente;
